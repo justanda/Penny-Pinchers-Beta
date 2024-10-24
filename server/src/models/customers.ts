@@ -1,6 +1,7 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
 interface customerInfo {
   id: number;
+  username: string;
   name: string;
   email: string;
   phone: number;
@@ -19,6 +20,7 @@ export class Customers
   implements customerInfo
 {
   public id!: number;
+  public username!: string;
   public name!: string;
   public email!: string;
   public phone!: number;
@@ -37,6 +39,10 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+      },
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
