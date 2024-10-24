@@ -1,3 +1,4 @@
+
 import sequelize from '../config/connection';
 import { initProduct } from './products';
 import { customerInit } from './customers';
@@ -11,3 +12,16 @@ const order = ordersInit(sequelize);
 
 export { product, customer, item, order };
 
+customer.hasMany(order, {
+  onDelete: "CASCADE",
+});
+
+order.belongsTo(customer);
+
+order.hasMany(item, {
+  onDelete: "CASCADE",
+});
+
+item.belongsTo(order);
+
+item.hasOne(product);
