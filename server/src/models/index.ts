@@ -1,6 +1,9 @@
+import sequelize from '../config/connection';
+import { initProduct } from './products';
 import {customer} from './customer';
 
-export const seedcustomer = async () => {
-  await customer.create({
-    name: 'John Morganti',
-    email: 'morganti.john@gmail.com',
+const product = initProduct(sequelize);
+
+
+export { product };
+
