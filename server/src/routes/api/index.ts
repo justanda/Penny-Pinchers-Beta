@@ -1,9 +1,8 @@
-import { } from '';
-import { } from '';
 import express from 'express';
+import { productRouter } from './productRoutes';
 
 const router = express.Router();
-//                                         TODO: FINISH PAGE
+//                                         TODO: FINISH FILE & MAKE MORE FILES
 router.use('/',);
 router.use('/',);
 
