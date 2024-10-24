@@ -39,8 +39,8 @@ export function ordersInit(sequelize: Sequelize): typeof Orders {
       },
     },
     {
-      sequelize,
       tableName: "orders",
+      sequelize,
     }
   );
   return Orders;
