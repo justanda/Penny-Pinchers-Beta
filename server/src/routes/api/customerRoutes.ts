@@ -48,16 +48,23 @@ router.put('/:id', async (req: Request, res: Response) => {
 
     try {
         console.log(req.body)
-        const [customerRows] = await customer.update(id, name, email, phone, address, city , state, zip);
-
-        if (customerRows === 0) {
-            return res.status(400).json({ message: `Customer not found or no changes made`})
+        const customerIntel = await customer.findByPk(id);
+        if (customerIntel) {
+            await customerIntel.update({
+                name,
+                email,
+                phone,
+                address,
+                city,
+                state,
+                zip
+            });
+            res.status(200).json({ message: `${name} has been succesfully update`})
+        } else {
+            res.status(404).json({ message: `Book not found`});
         }
-
-        const updatedCustomer = await customer.findByPk(id);
-        res.status(200).json(updatedCustomer);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
     }
 });
 

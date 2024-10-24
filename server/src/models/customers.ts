@@ -1,4 +1,5 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
+
 interface customerInfo {
   id: number;
   username: string;

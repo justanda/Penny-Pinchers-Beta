@@ -10,7 +10,6 @@ const customer = customerInit(sequelize);
 const item = itemsInit(sequelize);
 const order = ordersInit(sequelize);
 
-export { product, customer, item, order };
 
 customer.hasMany(order, {
   onDelete: "CASCADE",
@@ -25,3 +24,5 @@ order.hasMany(item, {
 item.belongsTo(order);
 
 item.hasOne(product);
+
+export { product, customer, item, order };
