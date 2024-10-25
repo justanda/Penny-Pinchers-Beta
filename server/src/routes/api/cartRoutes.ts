@@ -1,28 +1,28 @@
 import express from 'express';
 import { Request, Response } from 'express';
-import { order } from '../../models/index';
+import { cart } from '../../models/index';
 
 const router = express.Router();
 
-//http:localhost:3001/api/orders
+//http:localhost:3001/api/carts
 router.get('/', async (_req: Request, res: Response) => {
     try{
-        const orders = await order.findAll();
-        res.status(200).json(orders);
+        const carts = await cart.findAll();
+        res.status(200).json(carts);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error'});
     }
 });
 
-//http:localhost:3001/api/orders/{id}
+//http:localhost:3001/api/carts/{id}
 router.get('/:id', async (req: Request, res: Response) => {
 
      const { id } = req.params;
 
     try {
-        const orderData = await order.findByPk(id);
-        if (order) {
-            res.status(200).json(order);
+        const cartInfo = await cart.findByPk(id);
+        if (cartInfo) {
+            res.status(200).json(cartInfo);
         } else {
             res.status(404).json({ error: 'productData not found' });
         } 
@@ -31,34 +31,33 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
 });
 
-//http:localhost:3001/api/orders
+//http:localhost:3001/api/carts
 router.post('/', async (req: Request, res: Response) => {
     try { 
-        console.log (req.body)
-        const newOrder = await order.create(req.body);
-        res.status(201).json(newOrder);
+        console.log(req.body)
+        const newcart = await cart.create(req.body);
+        res.status(201).json(newcart);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error'});
     } 
 });
 
-//http:localhost:3001/api/orders/{id}
+//http:localhost:3001/api/carts/{id}
 router.put('/:id', async (req: Request, res: Response) => {
 
     const { id } = req.params;
     
-    const { customerId, itemsId, shipped } = req.body;
+    const { productId, orderId } = req.body;
 
     try {
         console.log(req.body)
-        const orderIntel = await order.findByPk(id);
-        if (orderIntel) {
-            await orderIntel.update({
-                customerId,
-                itemsId,
-                shipped
+        const cartIntel = await cart.findByPk(id);
+        if (cartIntel) {
+            await cartIntel.update({
+               productId,
+               orderId
             });
-            res.status(200).json({ message: `${customerId} has been succesfully update`})
+            res.status(200).json({ message: `${productId} has been succesfully update`})
         } else {
             res.status(404).json({ message: `Book not found`});
         }
@@ -67,23 +66,23 @@ router.put('/:id', async (req: Request, res: Response) => {
     }
 });
 
-//http:localhost:3001/api/orders/{id}
+//http:localhost:3001/api/carts/{id}
 router.delete('/:id', async (req: Request, res: Response) => {
     try {
-        const orderData = await order.destroy({
+        const cartData = await cart.destroy({
             where: {
                 id: req.params.id
             },
         });
     
-        if (!orderData) {
+        if (!cartData) {
             res.status(404).json({ message: 'Customer with associated id was not found'});
             return;
         }
-        res.status(200).json(orderData);
+        res.status(200).json(cartData);
     } catch (error) {
         res.status(500).json(error);
     }
 });
 
-export { router as orderRouter };
+export { router as cartRouter };

@@ -4,7 +4,7 @@ import { customer } from '../../models/index';
 
 const router = express.Router();
 
-
+//http:localhost:3001/api/customers
 router.get('/', async (_req: Request, res: Response) => {
     try{
         const customers = await customer.findAll();
@@ -14,6 +14,8 @@ router.get('/', async (_req: Request, res: Response) => {
     }
 });
 
+
+//http:localhost:3001/api/customers/{id}
 router.get('/:id', async (req: Request, res: Response) => {
 
      const { id } = req.params;
@@ -30,6 +32,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
 });
 
+//http:localhost:3001/api/customers
 router.post('/', async (req: Request, res: Response) => {
     try { 
         console.log(req.body)
@@ -40,17 +43,19 @@ router.post('/', async (req: Request, res: Response) => {
     } 
 });
 
+//http:localhost:3001/api/customers/{id}
 router.put('/:id', async (req: Request, res: Response) => {
 
     const { id } = req.params;
     
-    const { name, email, phone, address, city , state, zip} = req.body;
+    const { username, name, email, phone, address, city , state, zip } = req.body;
 
     try {
         console.log(req.body)
         const customerIntel = await customer.findByPk(id);
         if (customerIntel) {
             await customerIntel.update({
+                username,
                 name,
                 email,
                 phone,
@@ -68,6 +73,7 @@ router.put('/:id', async (req: Request, res: Response) => {
     }
 });
 
+//http:localhost:3001/api/customers/{id}
 router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const customerData = await customer.destroy({

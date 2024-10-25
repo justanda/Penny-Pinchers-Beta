@@ -1,14 +1,14 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
 
-interface itemInfo {
+interface cartInfo {
   id: number;
   productId: number;
   orderId: number;
 }
 
-interface itemInput extends Optional<itemInfo, "id"> {}
+interface cartInput extends Optional<cartInfo, "id"> {}
 
-export class Items extends Model<itemInfo, itemInput> implements itemInfo {
+export class Carts extends Model<cartInfo, cartInput> implements cartInfo {
   public id!: number;
   public productId!: number;
   public orderId!: number;
@@ -16,8 +16,8 @@ export class Items extends Model<itemInfo, itemInput> implements itemInfo {
   public readonly updatedAt!: Date;
 }
 
-export function itemsInit(sequelize: Sequelize): typeof Items {
-  Items.init(
+export function cartsInit(sequelize: Sequelize): typeof Carts {
+  Carts.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -35,8 +35,8 @@ export function itemsInit(sequelize: Sequelize): typeof Items {
     },
     {
       sequelize,
-      tableName: "items",
+      tableName: "Carts",
     }
   );
-  return Items;
+  return Carts;
 }

@@ -1,5 +1,5 @@
 import { seedOrders } from "./orders-seeds";
-import { seedItems } from "../seeds/items-seed";
+import { seedItems } from "../seeds/carts-seed";
 import { seedProducts } from "../seeds/product-seed";
 import { seedCustomers } from "./customers-seeds";
 import sequelize from "../config/connection";
