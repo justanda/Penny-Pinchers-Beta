@@ -1,56 +1,49 @@
 import express from 'express';
-import { Request, Response } from 'express';
 import { order } from '../../models/index.js';
-
 const router = express.Router();
-
 //http:localhost:3001/api/orders
-router.get('/', async (_req: Request, res: Response) => {
-    try{
+router.get('/', async (_req, res) => {
+    try {
         const orders = await order.findAll();
         res.status(200).json(orders);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error'});
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
 //http:localhost:3001/api/orders/{id}
-router.get('/:id', async (req: Request, res: Response) => {
-
-     const { id } = req.params;
-
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
     try {
         const orderData = await order.findByPk(id);
         if (orderData) {
             res.status(200).json(orderData);
-        } else {
+        }
+        else {
             res.status(404).json({ error: 'productData not found' });
-        } 
-    } catch (error) {
+        }
+    }
+    catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
 //http:localhost:3001/api/orders
-router.post('/', async (req: Request, res: Response) => {
-    try { 
-        console.log (req.body)
+router.post('/', async (req, res) => {
+    try {
+        console.log(req.body);
         const newOrder = await order.create(req.body);
         res.status(201).json(newOrder);
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error'});
-    } 
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
-
 //http:localhost:3001/api/orders/{id}
-router.put('/:id', async (req: Request, res: Response) => {
-
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    
     const { customerId, itemsId, shipped } = req.body;
-
     try {
-        console.log(req.body)
+        console.log(req.body);
         const orderIntel = await order.findByPk(id);
         if (orderIntel) {
             await orderIntel.update({
@@ -58,32 +51,32 @@ router.put('/:id', async (req: Request, res: Response) => {
                 itemsId,
                 shipped
             });
-            res.status(200).json({ message: `${customerId} has been succesfully update`})
-        } else {
-            res.status(404).json({ message: `Book not found`});
+            res.status(200).json({ message: `${customerId} has been succesfully update` });
         }
-    } catch (error: any) {
+        else {
+            res.status(404).json({ message: `Book not found` });
+        }
+    }
+    catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-
 //http:localhost:3001/api/orders/{id}
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', async (req, res) => {
     try {
         const orderData = await order.destroy({
             where: {
                 id: req.params.id
             },
         });
-    
         if (!orderData) {
-            res.status(404).json({ message: 'Customer with associated id was not found'});
+            res.status(404).json({ message: 'Customer with associated id was not found' });
             return;
         }
         res.status(200).json(orderData);
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json(error);
     }
 });
-
 export { router as orderRouter };
