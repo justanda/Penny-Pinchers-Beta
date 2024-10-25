@@ -6,7 +6,7 @@ interface orderInfo {
   shipped: boolean;
 }
 
-interface orderInput extends Optional<orderInfo, "id"> {}
+interface orderInput extends Optional<orderInfo, "id"> { }
 
 export class Orders extends Model<orderInfo, orderInput> implements orderInfo {
   public id!: number;
