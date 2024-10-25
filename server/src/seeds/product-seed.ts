@@ -1,60 +1,54 @@
-import { initProducts } from "../models/products";
+import { product } from "../models/products";
 
 export const seedProducts = async () => {
-  await initProducts.bulkCreate([
+  await product.bulkCreate([
     {
-      name: "Smoked Sausage (Hot, Med, Mild)",
+      title: "Smoked Sausage (Hot, Med, Mild)",
       price: 4.39,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      description: 'tasty',
+      category: 'smoke link',
+      image: 'derp',
+      sku: 'jmsausage'
     },
     {
-      name: "Smoked Sausage (Jalapeño Only)",
+      title: "Smoked Sausage (Jalapeño Only)",
       price: 4.49,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      
     },
     {
-      name: "Smoked Sausage (Cheddar or Pepper Jack)",
+      title: "Smoked Sausage (Cheddar or Pepper Jack)",
       price: 4.69,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      
     },
     {
-      name: "Smoked Sausage (Jalapeño/Cheese)",
+      title: "Smoked Sausage (Jalapeño/Cheese)",
       price: 4.99,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+     
     },
     {
-      name: "Italian and Fresh Sausage",
+      title: "Italian and Fresh Sausage",
       price: 4.19,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+     
     },
     {
-      name: "Pan Sausage (Regular or Hot)",
+      title: "Pan Sausage (Regular or Hot)",
       price: 4.09,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+     
     },
     {
-      name: "Summer Sausage (Regular)",
+      title: "Summer Sausage (Regular)",
       price: 4.49,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+     
     },
     {
-      name: "Summer Sausage (Jalapeño/Cheese)",
+      title: "Summer Sausage (Jalapeño/Cheese)",
       price: 4.99,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      
     },
     {
-      name: "Dry Stix",
+      title: "Dry Stix",
       price: 6.89,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    
     },
   ]);
 };

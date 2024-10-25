@@ -3,11 +3,11 @@ import sequelize from '../config/connection';
 import { initProduct } from './products';
 import { customerInit } from './customers';
 import { ordersInit } from './orders';
-import { itemsInit } from './item';
+import { cartsInit } from './cart';
 
 const product = initProduct(sequelize);
 const customer = customerInit(sequelize);
-const item = itemsInit(sequelize);
+const cart = cartsInit(sequelize);
 const order = ordersInit(sequelize);
 
 
@@ -17,12 +17,12 @@ customer.hasMany(order, {
 
 order.belongsTo(customer);
 
-order.hasMany(item, {
+order.hasMany(cart, {
   onDelete: "CASCADE",
 });
 
-item.belongsTo(order);
+cart.belongsTo(order);
 
-item.hasOne(product);
+cart.hasOne(product);
 
-export { product, customer, item, order };
+export { product, customer, cart, order };
