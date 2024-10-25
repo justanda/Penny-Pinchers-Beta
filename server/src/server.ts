@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import sequelize from "./config/connection";
 import routes from "./routes/index";

@@ -1,24 +1,28 @@
-import sequelize from "../config/connection";
-import { initProduct } from "./products";
-import { customerInit } from "./customers";
-import { ordersInit } from "./orders";
-import { itemsInit } from "./items";
 
-const Product = initProduct(sequelize);
-const Customer = customerInit(sequelize);
-const Orders = ordersInit(sequelize);
-const Items = itemsInit(sequelize);
+import sequelize from '../config/connection';
+import { initProduct } from './products';
+import { customerInit } from './customers';
+import { ordersInit } from './orders';
+import { itemsInit } from './item';
 
-Customer.hasMany(Orders, {
+const product = initProduct(sequelize);
+const customer = customerInit(sequelize);
+const item = itemsInit(sequelize);
+const order = ordersInit(sequelize);
+
+
+customer.hasMany(order, {
   onDelete: "CASCADE",
 });
 
-Orders.belongsTo(Customer);
+order.belongsTo(customer);
 
-Orders.hasMany(Items, {
+order.hasMany(item, {
   onDelete: "CASCADE",
 });
 
-Items.belongsTo(Orders);
+item.belongsTo(order);
 
-Items.hasOne(Product);
+item.hasOne(product);
+
+export { product, customer, item, order };

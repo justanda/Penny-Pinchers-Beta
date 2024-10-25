@@ -1,4 +1,5 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
+
 interface customerInfo {
   id: number;
   username: string;
@@ -84,8 +85,8 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
       },
     },
     {
-      sequelize,
       tableName: "customers",
+      sequelize,
     }
   );
   return Customers;
