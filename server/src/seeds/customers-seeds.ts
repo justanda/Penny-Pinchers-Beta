@@ -1,4 +1,4 @@
-import { Customers } from "../models/customers";
+import { Customers } from "../models/customers.js";
 
 export const seedCustomers = async () => {
   await Customers.bulkCreate([

@@ -1,8 +1,8 @@
-import { seedOrders } from "./orders-seeds";
-import { seedItems } from "../seeds/carts-seed";
-import { seedProducts } from "../seeds/product-seed";
-import { seedCustomers } from "./customers-seeds";
-import sequelize from "../config/connection";
+import { seedOrders } from "./orders-seeds.js";
+import { seedCarts } from "./carts-seed.js";
+import { seedProducts } from "./product-seed.js";
+import { seedCustomers } from "./customers-seeds.js";
+import sequelize from "../config/connection.js";
 
 const seedAll = async (): Promise<void> => {
   try {
@@ -15,8 +15,8 @@ const seedAll = async (): Promise<void> => {
     await seedProducts();
     console.log("Products seeded");
 
-    await seedItems();
-    console.log("Items seeded");
+    await seedCarts();
+    console.log("Carts seeded");
 
     await seedOrders();
     console.log("Orders seeded");

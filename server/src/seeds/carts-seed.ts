@@ -1,4 +1,4 @@
-import { Carts } from "../models/cart";
+import { Carts } from "../models/cart.js";
 
 export const seedCarts = async () => {
   await Carts.bulkCreate([

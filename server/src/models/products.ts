@@ -14,12 +14,12 @@ interface createProduct extends Optional<productInfo, "id"> {}
 
 class product extends Model<productInfo, createProduct> implements productInfo {
   public id!: number;
-  public title: string;
-  public price: number;
-  public description: string;
-  public category: string;
-  public image: string;
-  public sku: string;
+  public title!: string;
+  public price!: number;
+  public description!: string;
+  public category!: string;
+  public image!: string;
+  public sku!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
