@@ -1,6 +1,6 @@
 import { Carts } from "../models/cart";
 
-export const seedItems = async () => {
+export const seedCarts = async () => {
   await Carts.bulkCreate([
     { productId: 4, orderId: 4 },
     { productId: 5, orderId: 5 },
