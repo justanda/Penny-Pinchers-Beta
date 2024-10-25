@@ -14,7 +14,7 @@ interface customerInfo {
   updatedAt: Date;
 }
 
-interface customerInput extends Optional<customerInfo, "id"> {}
+interface customerInput extends Optional<customerInfo, "id"> { }
 
 export class Customers
   extends Model<customerInfo, customerInput>

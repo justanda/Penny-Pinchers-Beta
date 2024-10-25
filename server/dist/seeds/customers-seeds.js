@@ -36,6 +36,6 @@ export const seedCustomers = async () => {
             zip: 34567,
             createdAt: new Date(),
             updatedAt: new Date(),
-        },
+        }
     ]);
 };

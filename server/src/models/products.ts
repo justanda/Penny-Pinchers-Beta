@@ -10,7 +10,7 @@ interface productInfo {
   sku: string;
 }
 
-interface createProduct extends Optional<productInfo, "id"> {}
+interface createProduct extends Optional<productInfo, "id"> { }
 
 class product extends Model<productInfo, createProduct> implements productInfo {
   public id!: number;
