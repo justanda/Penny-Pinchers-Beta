@@ -24,7 +24,7 @@ router.get('/:id', async (req: Request, res: Response) => {
         if (cartInfo) {
             res.status(200).json(cartInfo);
         } else {
-            res.status(404).json({ error: 'productData not found' });
+            res.status(404).json({ error: 'cartData not found' });
         } 
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
@@ -57,9 +57,9 @@ router.put('/:id', async (req: Request, res: Response) => {
                productId,
                orderId
             });
-            res.status(200).json({ message: `${productId} has been succesfully update`})
+            res.status(200).json({ message: `cartIntel has been updated`});
         } else {
-            res.status(404).json({ message: `Book not found`});
+            res.status(404).json({ message: `cartIntel not found`});
         }
     } catch (error: any) {
         res.status(500).json({ message: error.message });
@@ -76,10 +76,10 @@ router.delete('/:id', async (req: Request, res: Response) => {
         });
     
         if (!cartData) {
-            res.status(404).json({ message: 'Customer with associated id was not found'});
+            res.status(404).json({ message: 'cartData with associated id was not found'});
             return;
         }
-        res.status(200).json(cartData);
+        res.status(200).json({ message: 'cartData with associated id has been deleted' });
     } catch (error) {
         res.status(500).json(error);
     }
