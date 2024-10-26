@@ -4,9 +4,11 @@ interface cartInfo {
   id: number;
   productId: number;
   orderId: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-interface cartInput extends Optional<cartInfo, "id"> { }
+interface cartInput extends Optional<cartInfo, "id" | "createdAt" | "updatedAt"> { }
 
 export class Carts extends Model<cartInfo, cartInput> implements cartInfo {
   public id!: number;
@@ -31,6 +33,16 @@ export function cartsInit(sequelize: Sequelize): typeof Carts {
       orderId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

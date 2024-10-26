@@ -8,9 +8,11 @@ interface productInfo {
   category: string;
   image: string;
   sku: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-interface createProduct extends Optional<productInfo, "id"> { }
+interface createProduct extends Optional<productInfo, "id" | "createdAt" | "updatedAt"> { }
 
 class product extends Model<productInfo, createProduct> implements productInfo {
   public id!: number;
@@ -56,6 +58,16 @@ function initProduct(sequelize: Sequelize): typeof product {
       sku: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

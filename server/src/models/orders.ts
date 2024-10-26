@@ -4,15 +4,16 @@ interface orderInfo {
   customerId: number;
   itemsId: number;
   shipped: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-interface orderInput extends Optional<orderInfo, "id"> { }
+interface orderInput extends Optional<orderInfo, "id" | "createdAt" | "updatedAt"> { }
 
 export class Orders extends Model<orderInfo, orderInput> implements orderInfo {
   public id!: number;
   public customerId!: number;
   public itemsId!: number;
-  //   public totalPrice!: number;
   public shipped!: boolean;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -36,6 +37,16 @@ export function ordersInit(sequelize: Sequelize): typeof Orders {
       shipped: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

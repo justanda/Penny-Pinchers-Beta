@@ -5,7 +5,7 @@ interface customerInfo {
   username: string;
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   address: string;
   city: string;
   state: string;
@@ -14,7 +14,7 @@ interface customerInfo {
   updatedAt: Date;
 }
 
-interface customerInput extends Optional<customerInfo, "id"> { }
+interface customerInput extends Optional<customerInfo, "id" | "createdAt" | "updatedAt"> { }
 
 export class Customers
   extends Model<customerInfo, customerInput>
@@ -24,7 +24,7 @@ export class Customers
   public username!: string;
   public name!: string;
   public email!: string;
-  public phone!: number;
+  public phone!: string;
   public address!: string;
   public city!: string;
   public state!: string;
@@ -54,7 +54,7 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
         allowNull: false,
       },
       phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       address: {
@@ -90,4 +90,4 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
     }
   );
   return Customers;
-}
+};

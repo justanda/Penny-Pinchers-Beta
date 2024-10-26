@@ -24,7 +24,7 @@ router.get('/:id', async (req: Request, res: Response) => {
         if (productInfo) {
             res.status(200).json(productInfo);
         } else {
-            res.status(404).json({ error: 'productData not found' });
+            res.status(404).json({ error: 'productInfo not found' });
         } 
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
@@ -61,7 +61,7 @@ router.put('/:id', async (req: Request, res: Response) => {
                 image,
                 sku
             });
-            res.status(200).json({ message: `${name} has been succesfully update`})
+            res.status(200).json({ message: `productIntel has been updated` });
         } else {
             res.status(404).json({ message: `Book not found`});
         }
@@ -80,10 +80,10 @@ router.delete('/:id', async (req: Request, res: Response) => {
         });
     
         if (!productData) {
-            res.status(404).json({ message: 'Customer with associated id was not found'});
+            res.status(404).json({ message: 'productData with associated id was not found'});
             return;
         }
-        res.status(200).json(productData);
+        res.status(200).json({ message: 'productData with associated id has been deleted' });
     } catch (error) {
         res.status(500).json(error);
     }
