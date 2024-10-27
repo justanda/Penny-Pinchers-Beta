@@ -1,7 +1,7 @@
-import { Orders } from "../models/orders.js";
+import { order } from "../models/index.js";
 
 export const seedOrders = async () => {
-  await Orders.bulkCreate([
+  await order.bulkCreate([
     {
       customerId: 1,
       itemsId: 1,
