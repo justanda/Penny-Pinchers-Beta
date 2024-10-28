@@ -1,23 +1,23 @@
 // a component to render a list of product cards
 
-//import React from 'react';
+// //import React from 'react';
 
-import { Product } from '../interfaces/Product';
-import ProductCard from './ProductCard';
+// import { Product } from '../interfaces/Product';
+// import ProductCard from './ProductCard';
 
-interface ProductListProps {
-  products: Product[];
-}
+// interface ProductListProps {
+//   products: Product[];
+// }
 
-const ProductList = ({ products }: ProductListProps) => {
+// const ProductList = ({ products }: ProductListProps) => {
   
-  return (
-    <div className="product-list">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="product-list">
+//       {products.map((product) => (
+//         <ProductCard key={product.id} product={product} />
+//       ))}
+//     </div>
+//   );
+// };
 
-export default ProductList;
+// export default ProductList;

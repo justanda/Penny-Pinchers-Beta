@@ -27,6 +27,27 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+//http:localhost:3001/api/products/{category}
+router.get('/category/:category', async (req, res) => {
+    const selectedCategory = req.params.category;
+    console.log(selectedCategory);
+    try {
+        const productCategory = await product.findAll({
+            where: {
+                category: selectedCategory
+            }
+        });
+        if (productCategory) {
+            res.status(200).json(productCategory);
+        }
+        else {
+            res.status(404).json({ error: 'productCategory not found' });
+        }
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 //http:localhost:3001/api/products
 router.post('/', async (req, res) => {
     try {
