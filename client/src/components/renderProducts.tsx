@@ -6,8 +6,9 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
-    return (
-        <>
+
+      return (
+            <>
             {products && products.map((product) => (
                 <div key={product.id}>
                     <h4>{product.title}</h4>
@@ -18,4 +19,6 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
     );
 };
 
-export default ProductList;
+ export default ProductList;
+ 
+
