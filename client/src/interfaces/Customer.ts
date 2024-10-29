@@ -1,11 +1,12 @@
-
-// export interface Customer {
-//     id ?: number;           // Optional, if you want to include an ID (e.g., from a database)
-//     username ?: string;      
-//     name: string;          
-//     email: string;         
-//     phone: string;         
-//     address: string;       
-//     city: string;          
-//     zipCode: string;       
-//   }
+export interface Customer {
+  id: number | null;
+  username: string | null;
+  // name: string | null;
+  password: string | null;
+  email: string | null;
+  //   phone: string | null;
+  //   address: string | null;
+  //   city: string | null;
+  //   zipCode: string | null;
+  // }
+}

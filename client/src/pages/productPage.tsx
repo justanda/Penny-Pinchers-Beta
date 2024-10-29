@@ -4,23 +4,23 @@ import type { Product } from "../interfaces/Product";
 import ProductList from "../components/renderProducts";
 
 const ProductPage = () => {
-    const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-        useEffect(() => {
-            fetchProducts();
-        }, []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-        const fetchProducts = async () => {
-            const data = await retrieveProducts();
+  const fetchProducts = async () => {
+    const data = await retrieveProducts();
 
-            setProducts(data);
-        }
+    setProducts(data);
+  };
 
-        return ( 
-            <>
-            <ProductList products={products} />
-            </>
-        );
+  return (
+    <>
+      <ProductList products={products} />
+    </>
+  );
 };
 
 export default ProductPage;
