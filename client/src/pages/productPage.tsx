@@ -1,26 +1,38 @@
 import { useState, useEffect } from "react";
-import retrieveProducts from "../api/productsAPI";
+import { retrieveProducts, filteredByCategory } from "../api/productsAPI";
 import type { Product } from "../interfaces/Product";
 import ProductList from "../components/renderProducts";
 
 const ProductPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
+    const [filteredData, setFilteredData] = useState<Product[]>([]);
+    const [userSelected, setUserSelected] = useState(false);
 
-        useEffect(() => {
-            fetchProducts();
-        }, []);
+    const handleInputChange = async (e: any) => {
+        const value = e.target.value;
+        const data = await filteredByCategory(value);
+        setFilteredData(data);
+    }
 
-        const fetchProducts = async () => {
-            const data = await retrieveProducts();
+     useEffect(() => {
+        fetchProducts();
+    }, []);
 
-            setProducts(data);
-        }
+    const fetchProducts = async () => {
+         const data = await retrieveProducts();
 
-        return ( 
-            <>
-            <ProductList products={products} />
-            </>
-        );
+         setProducts(data);
+    }
+
+    return ( 
+         <>
+         <select onChange={handleInputChange}>
+             <option value='smoked'>smoked</option>
+            <option value='fresh'>fresh</option>
+        </select>
+         <ProductList products={products} filteredData={filteredData} userSelected={userSelected} setUserSelected={setUserSelected}/>
+         </>
+    );
 };
 
 export default ProductPage;
