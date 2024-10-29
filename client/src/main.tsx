@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
-import Home from './pages/testingProduct.tsx';
+import ProductPage from './pages/productPage';
 
 const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
-      }
+        element: <ProductPage />
+      },
     ]
   }
 ])
@@ -21,7 +21,6 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
 }
-
 
 
 

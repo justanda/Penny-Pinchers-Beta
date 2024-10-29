@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { retrieveProducts } from "../api/productsTEST";
+import retrieveProducts from "../api/productsAPI";
 import type { Product } from "../interfaces/Product";
-import ProductList from "../components/pRenderTest";
+import ProductList from "../components/renderProducts";
 
-const Home = () => {
+const ProductPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
         useEffect(() => {
@@ -23,4 +23,4 @@ const Home = () => {
         );
 };
 
-export default Home;
+export default ProductPage;

@@ -1,6 +1,4 @@
 
-// src/interfaces/Product.ts
-// Define the Product interface for use in the frontend
 export interface Product {
     id: number | null;
     title: string | null;
