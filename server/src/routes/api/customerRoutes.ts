@@ -12,22 +12,34 @@ router.get("/", async (_req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
+router.get('/', async (_req: Request, res: Response) => {
+    try{
+        const customers = await customer.findAll({
+            attributes: { exclude: ['password']}
+        });
+        res.status(200).json(customers);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error'});
+    }
 });
 
 //http:localhost:3001/api/customers/{id}
-router.get("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
+router.get('/:id', async (req: Request, res: Response) => {
 
-  try {
-    const customerInfo = await customer.findByPk(id);
-    if (customerInfo) {
-      res.status(200).json(customerInfo);
-    } else {
-      res.status(404).json({ error: "customerInfo not found" });
+     const { id } = req.params;
+
+    try {
+        const customerInfo = await customer.findByPk(id, {
+            attributes: { exclude: ['password']}
+        });
+        if (customerInfo) {
+            res.status(200).json(customerInfo);
+        } else {
+            res.status(404).json({ error: 'customerInfo not found' });
+        } 
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
 });
 
 //http:localhost:3001/api/customers
@@ -47,27 +59,27 @@ router.put("/:id", async (req: Request, res: Response) => {
 
   const { username, name, email, phone, address, city, state, zip } = req.body;
 
-  try {
-    console.log(req.body);
-    const customerIntel = await customer.findByPk(id);
-    if (customerIntel) {
-      await customerIntel.update({
-        username,
-        name,
-        email,
-        phone,
-        address,
-        city,
-        state,
-        zip,
-      });
-      res.status(200).json({ message: `customerIntel has been updated` });
-    } else {
-      res.status(404).json({ message: `customerIntel not found` });
+    try {
+        console.log(req.body)
+        const customerIntel = await customer.findByPk(id);
+        if (customerIntel) {
+            await customerIntel.update({
+                username,
+                name,
+                email,
+                phone,
+                address,
+                city,
+                state,
+                zip,
+            });
+            res.status(200).json({ message: `customerIntel has been updated`});
+        } else {
+            res.status(404).json({ message: `customerIntel not found`});
+        }
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
     }
-  } catch (error: any) {
-    res.status(500).json({ message: error.message });
-  }
 });
 
 //http:localhost:3001/api/customers/{id}

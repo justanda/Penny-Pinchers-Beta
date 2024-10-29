@@ -2,24 +2,32 @@ import React from "react";
 import type { Product } from "../interfaces/Product";
 
 interface ProductListProps {
-  products: Product[] | null;
+  products: Product[];
+  filteredData: Product[];
+  userSelected: boolean;
+  setUserSelected: Function;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
+const ProductList: React.FC<ProductListProps> = ({
+  products,
+  filteredData,
+  userSelected,
+  setUserSelected,
+}) => {
   return (
     <>
-      {products &&
-        products.map((product) => (
-          <div key={product.id}>
-            <h4>{product.title}</h4>
-            <div>
-              {" "}
-              <p>{product.description}</p>
-            </div>
-          </div>
+      <button onClick={() => setUserSelected(!userSelected)}>
+        Show All Products
+      </button>
+      <ul>
+        {(userSelected ? filteredData : products).map((product) => (
+          <li key={product.id}>{product.title}</li>
         ))}
+      </ul>
     </>
   );
 };
+
+export default ProductList;
 
 export default ProductList;
