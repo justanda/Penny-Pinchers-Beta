@@ -4,7 +4,9 @@ const router = express.Router();
 //http:localhost:3001/api/customers
 router.get('/', async (_req, res) => {
     try {
-        const customers = await customer.findAll();
+        const customers = await customer.findAll({
+            attributes: { exclude: ['password'] }
+        });
         res.status(200).json(customers);
     }
     catch (error) {
@@ -15,7 +17,9 @@ router.get('/', async (_req, res) => {
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const customerInfo = await customer.findByPk(id);
+        const customerInfo = await customer.findByPk(id, {
+            attributes: { exclude: ['password'] }
+        });
         if (customerInfo) {
             res.status(200).json(customerInfo);
         }
@@ -54,7 +58,7 @@ router.put('/:id', async (req, res) => {
                 address,
                 city,
                 state,
-                zip
+                zip,
             });
             res.status(200).json({ message: `customerIntel has been updated` });
         }

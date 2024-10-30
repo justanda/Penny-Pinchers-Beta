@@ -1,4 +1,5 @@
 import { Model, DataTypes } from "sequelize";
+// "password" 
 export class Customers extends Model {
 }
 export function customerInit(sequelize) {
@@ -12,6 +13,10 @@ export function customerInit(sequelize) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // password: {
+        //   type: DataTypes.STRING,
+        //   allowNull: false,
+        // },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -57,3 +62,12 @@ export function customerInit(sequelize) {
     return Customers;
 }
 ;
+// hooks: {
+//   beforeCreate: async (user: Customers) => {
+//     await user.setPassword(user.password);
+//   },
+//   beforeUpdate: async (user: Customers) => {
+//     if (user.changed('password')) {
+//       await user.setPassword(user.password);
+//     }
+//   },}
