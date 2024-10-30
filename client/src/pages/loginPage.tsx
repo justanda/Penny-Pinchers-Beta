@@ -9,6 +9,10 @@ const Login = () => {
     username: "",
     password: "",
   });
+
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -17,6 +21,7 @@ const Login = () => {
       ...customerData,
       [name]: value,
     });
+    // return name === "username" ? setUsername(value) : setPassword(value);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -27,6 +32,8 @@ const Login = () => {
     } catch (error) {
       console.error("Failed to login", error);
     }
+    // setUsername(username);
+    // setPassword(password);
   };
 
   return (
@@ -42,6 +49,7 @@ const Login = () => {
             name="username"
             value={customerData.username || ""}
             onChange={handleChange}
+            placeholder="Username"
           />
         </div>
         {/* Password input field */}
@@ -51,6 +59,7 @@ const Login = () => {
             className="form-input"
             type="password"
             name="password"
+            placeholder="Password"
             value={customerData.password || ""}
             onChange={handleChange}
           />
