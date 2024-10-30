@@ -1,4 +1,4 @@
-import auth from "../../utils/auth";
+import auth from "../utils/auth";
 
 const GetCustomer = async () => {
   try {

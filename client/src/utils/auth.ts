@@ -5,7 +5,7 @@ class authUser {
   }
 
   getToken() {
-    const loggedIn = localStorage.getItem("loggedIn");
+    const loggedIn = localStorage.getItem("loggedIn") || "";
     return loggedIn;
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Customer } from "../interfaces/Customer";
+import { Customer } from "../interfaces/CustomerLogin";
 
 interface CustomerProps {
   customer: Customer | null;
