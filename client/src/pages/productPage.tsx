@@ -23,11 +23,6 @@ const ProductPage = () => {
 
   const fetchProducts = async () => {
     const data = await retrieveProducts();
-    const fetchProducts = async () => {
-      const data = await retrieveProducts();
-
-      setProducts(data);
-    };
     setProducts(data);
   };
 
