@@ -1,8 +1,8 @@
-import { Customer } from "../interfaces/Customer";
+import { CustomerLogin } from "../interfaces/CustomerLogin";
 
-const Login = async (custInfo: Customer) => {
+const login = async (custInfo: CustomerLogin) => {
   try {
-    const response = await fetch("http://localhost:5137/api/auth/login", {
+    const response = await fetch("auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,15 +11,16 @@ const Login = async (custInfo: Customer) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to login.");
+      const errorData = await response.json();
+      throw new Error(`Error: ${errorData.message}`);
     }
 
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (err) {
-    console.error(err);
-    return Promise.reject(err);
+    console.log("Error from customer login:", err);
+    return Promise.reject("Could not fetch customer info");
   }
 };
-export default Login;
+export { login };
