@@ -1,6 +1,10 @@
 import { Model, DataTypes } from "sequelize";
-// "password" 
+import bcrypt from 'bcrypt';
 export class Customers extends Model {
+    async setPassword(password) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(password, saltRounds);
+    }
 }
 export function customerInit(sequelize) {
     Customers.init({
@@ -13,10 +17,10 @@ export function customerInit(sequelize) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // password: {
-        //   type: DataTypes.STRING,
-        //   allowNull: false,
-        // },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -58,16 +62,17 @@ export function customerInit(sequelize) {
     }, {
         tableName: "customers",
         sequelize,
+        hooks: {
+            beforeCreate: async (user) => {
+                await user.setPassword(user.password);
+            },
+            beforeUpdate: async (user) => {
+                if (user.changed('password')) {
+                    await user.setPassword(user.password);
+                }
+            },
+        }
     });
     return Customers;
 }
 ;
-// hooks: {
-//   beforeCreate: async (user: Customers) => {
-//     await user.setPassword(user.password);
-//   },
-//   beforeUpdate: async (user: Customers) => {
-//     if (user.changed('password')) {
-//       await user.setPassword(user.password);
-//     }
-//   },}
