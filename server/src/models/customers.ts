@@ -1,10 +1,10 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 
 interface customerInfo {
   id: number;
   username: string;
-  password: string;
+  // password: string;
   name: string;
   email: string;
   phone: string;
@@ -16,7 +16,8 @@ interface customerInfo {
   updatedAt: Date;
 }
 
-interface customerInput extends Optional<customerInfo, "id" | "password" | "createdAt" | "updatedAt"> { }
+interface customerInput extends Optional<customerInfo, "id" |  "createdAt" | "updatedAt"> { }
+// "password" 
 
 export class Customers
   extends Model<customerInfo, customerInput>
@@ -35,10 +36,10 @@ export class Customers
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  public async setPassword(password: string) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(password, saltRounds);
-  }
+  // public async setPassword(password: string) {
+  //   const saltRounds = 10;
+  //   this.password = await bcrypt.hash(password, saltRounds);
+  // }
 }
 
 export function customerInit(sequelize: Sequelize): typeof Customers {
@@ -53,10 +54,10 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // password: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -99,17 +100,17 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
     {
       tableName: "customers",
       sequelize,
-      hooks: {
-        beforeCreate: async (user: Customers) => {
-          await user.setPassword(user.password);
-        },
-        beforeUpdate: async (user: Customers) => {
-          if (user.changed('password')) {
-            await user.setPassword(user.password);
-          }
-        },
-      }
     }
-  );
-  return Customers;
+);
+return Customers;
 };
+
+// hooks: {
+//   beforeCreate: async (user: Customers) => {
+//     await user.setPassword(user.password);
+//   },
+//   beforeUpdate: async (user: Customers) => {
+//     if (user.changed('password')) {
+//       await user.setPassword(user.password);
+//     }
+//   },}
