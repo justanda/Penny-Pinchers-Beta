@@ -1,5 +1,5 @@
 import { Model, DataTypes, Optional, Sequelize } from "sequelize";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 interface customerInfo {
   id: number;
@@ -16,7 +16,11 @@ interface customerInfo {
   updatedAt: Date;
 }
 
-interface customerInput extends Optional<customerInfo, "id" | "password" | "createdAt" | "updatedAt"> { }
+interface customerInput
+  extends Optional<
+    customerInfo,
+    "id" | "password" | "createdAt" | "updatedAt"
+  > {}
 
 export class Customers
   extends Model<customerInfo, customerInput>
@@ -104,12 +108,12 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
           await user.setPassword(user.password);
         },
         beforeUpdate: async (user: Customers) => {
-          if (user.changed('password')) {
+          if (user.changed("password")) {
             await user.setPassword(user.password);
           }
         },
-      }
+      },
     }
   );
   return Customers;
-};
+}

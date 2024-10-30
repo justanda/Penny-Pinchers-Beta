@@ -1,12 +1,11 @@
-
-// console.log("Begin Cart.tsx")
+// console.log("Begin Cart.tsx");
 
 // // display a list of products added to a cart
-// // 
+// //
 
-// import { useEffect, useState } from 'react';
-// import CartTable from '../components/CartTable';
-// import { Item } from '../interfaces/Item'; // Import from the new Item interface
+// import { useEffect, useState } from "react";
+// import CartTable from "../components/CartTable";
+// import { Item } from "../interfaces/Item"; // Import from the new Item interface
 // //import './Cart.css'; // Optional styling
 
 // const Cart = () => {
@@ -17,14 +16,14 @@
 //   useEffect(() => {
 //     const fetchCartItems = async () => {
 //       try {
-//         const response = await fetch('/api/cart');
+//         const response = await fetch("/api/cart");
 //         if (!response.ok) {
-//           throw new Error('Failed to fetch cart items');
+//           throw new Error("Failed to fetch cart items");
 //         }
 //         const data = await response.json();
 //         setCartItems(data); // The data returned should be like this Item[]
 //       } catch (error) {
-//         console.error('Error fetching cart items:', error);
+//         console.error("Error fetching cart items:", error);
 //       } finally {
 //         setLoading(false);
 //       }
@@ -57,7 +56,9 @@
 //       <h1>Your Cart</h1>
 //       <CartTable cartItems={cartItems} getTotalPrice={getTotalPrice} />
 //       <div className="cart-actions">
-//         <a href="/checkout" className="checkout-button">Proceed to Checkout</a>
+//         <a href="/checkout" className="checkout-button">
+//           Proceed to Checkout
+//         </a>
 //       </div>
 //     </div>
 //   );
