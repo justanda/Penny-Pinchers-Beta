@@ -16,8 +16,9 @@ interface customerInfo {
   updatedAt: Date;
 }
 
-interface customerInput extends Optional<customerInfo, "id" |  "createdAt" | "updatedAt"> { }
-// "password" 
+interface customerInput
+  extends Optional<customerInfo, "id" | "createdAt" | "updatedAt"> {}
+// "password"
 
 export class Customers
   extends Model<customerInfo, customerInput>
@@ -25,7 +26,7 @@ export class Customers
 {
   public id!: number;
   public username!: string;
-  public password!: string;
+  // public password!: string;
   public name!: string;
   public email!: string;
   public phone!: string;
@@ -101,9 +102,9 @@ export function customerInit(sequelize: Sequelize): typeof Customers {
       tableName: "customers",
       sequelize,
     }
-);
-return Customers;
-};
+  );
+  return Customers;
+}
 
 // hooks: {
 //   beforeCreate: async (user: Customers) => {

@@ -1,34 +1,37 @@
-// import { Router, Request, Response } from 'express';
-// import { Customers } from '../models/customers';
-// import jwt from 'jsonwebtoken';
-// import bcrypt from 'bcrypt';
+import { Router, Request, Response, RequestHandler } from "express";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { Customers } from "../models/customers"; // Adjust the import path as necessary
 
-// export const login = async (req: Request, res: Response) => {
-//     const { username, password } = req.body;
+const router = Router();
 
-//     const user = await Customers.findOne({
-//         where: { username },
-//     });
+const loginRoute: RequestHandler = async (
+  req: Request,
+  res: Response
+): Promise<Response | void> => {
+  const { username, password } = req.body;
 
-//     if (!user) {
-//         return res.status(401).json({ message: 'Authentication failed' });
-//     }
+  try {
+    const user = await Customers.findOne({ where: { username } });
 
-//     const passwordIsValid = await bcrypt.compare(password, user.password);
-//     if (!passwordIsValid) {
-//         return res.status(401).json({ message: 'Authentication failed' });
-//     }
+    if (!user) {
+      return res.status(401).json({ message: "Authentication failed" });
+    }
 
-//     const secretKey = process.env.JWT_SECRET_KEY || '';
+    const passwordIsValid = await bcrypt.compare(password, user.password);
+    if (!passwordIsValid) {
+      return res.status(401).json({ message: "Authentication failed" });
+    }
 
-//     const token = jwt.sign({ username }, secretKey, { expiresIn: '3h' });
-//     return res.json({ token });
-// }
+    const secretKey = process.env.JWT_SECRET_KEY || "";
 
-// const router = Router();
+    const token = jwt.sign({ username }, secretKey, { expiresIn: "3h" });
+    return res.json({ token });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
+router.post("/login", loginRoute);
 
-
-// router.post('/login', login);
-
-// export default router;
+export default router;
