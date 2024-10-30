@@ -39,8 +39,25 @@ const filteredByCategory = async (value: string) => {
     }
 }
 
+const fetchProductById = async (id: number) => {
+    try {
+        const response = await fetch(`api/products/${id}`,{
+            headers: { 'Content-Type': 'application/json', }
+        });
+        const data = await response.json();
+    
+        if (!response.ok) {
+          throw new Error(`Failed to fetch product with Id: ${id}`);
+        }
+        return data;
+    } catch (err) {
+        console.log('Error from data retrieval:', err);
+        return[];
+    }
+  }
 
 
 
 
-export { retrieveProducts, filteredByCategory };
+
+export { retrieveProducts, filteredByCategory, fetchProductById };

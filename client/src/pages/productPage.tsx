@@ -1,7 +1,14 @@
+
+// This page outputs a drop down of product categories and filters the 
+// list of products from the database
+//  :export default ProductPage
+
 import { useState, useEffect } from "react";
 import { retrieveProducts, filteredByCategory } from "../api/productsAPI";
 import type { Product } from "../interfaces/Product";
 import ProductList from "../components/renderProducts";
+
+
 
 const ProductPage = () => {
     const [products, setProducts] = useState<Product[]>([]);

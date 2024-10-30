@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
 import ProductPage from './pages/productPage';
+import Login from './pages/CustomerForm';
+import ProductDetails from './pages/ProductDetails'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +16,14 @@ const router = createBrowserRouter([
         index: true,
         element: <ProductPage />
       },
+      {
+        path: '/login', 
+        element: <Login />
+      },
+      {
+        path: '/product/:id', 
+        element: <ProductDetails />
+      }
     ]
   }
 ])

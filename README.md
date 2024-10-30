@@ -6,7 +6,7 @@ This is a basic online store - Penny Pinchers (Beta)
 
 ## Description
 
-Penny Pinchers Beta is an online store implemented as a PERN application
+Penny Pinchers Beta is an online store implemented as a PERN application, PostGres (db), Express (backend), React (frontend), Node.
 
 # Table of Contents
 
@@ -21,27 +21,23 @@ Penny Pinchers Beta is an online store implemented as a PERN application
 
 To install this application, clone the git repository, run the following:
 
---- Update .env file
---- Install and run
+- Install and run
+- git clone Penny Pinchers Beta
+- Update .env file with local db and credentials
+- git checkout -b "branch_name"
+- npm install
+- npm run build
 
-> git checkout -b "branch_name"
-> npm install
-> npm run build  
-> --- Create postgres db and seed
-> cd server/db
-> psql -U postgres
-> \i schema.sql
-> \q
-> npm run seed
-> --- Start the servers
-> cd ../../ to root
-> npm run start:dev
+- Create postgres db and seed
+- cd server/db
+- psql -U postgres
+- \i schema.sql
+- \q
+- npm run seed
 
-## Usage
-
-To run this application,
-
-> npm run start:dev
+- Start the servers
+- cd ../../ to root
+- npm run start:dev
 
 ## License
 
@@ -52,14 +48,12 @@ This work is covered under license. Click the license badge for details about th
 
 Created by John Morganti.
 
-- [React]
+- [React](https://www.npmjs.com/package/react)
 - [Node](https://nodejs.org/)
-- [Express]
-- [Postgres]
-- [Typescript]
+- [Express](https://www.npmjs.com/package/express)
+- [Postgres](https://www.npmjs.com/package/postgres)
+- [Typescript](https://www.typescriptlang.org/)
 
 ## Questions
 
-For more information about me, visit my [GitHub Profile](https://github.com/jfmorganti)
-
-If you have additional questions, email me at [jfmorganti@gmail.com](mailto:jfmorganti@gmail.com)
+For more information about me, visit a contributors profile.
