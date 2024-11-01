@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App.tsx";
 import ProductPage from "./pages/productPage";
 import Login from "./pages/loginPage.tsx";
-// import Cart from "./pages/Cart.tsx";
+import ProductDetails from "./pages/ProductDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
@@ -20,14 +21,10 @@ const router = createBrowserRouter([
         path: "/loginPage",
         element: <Login />,
       },
-      // {
-      //   path: "/loginpage/:id",
-      //   element: <LoginPage />,
-      // },
-      // {
-      //   path: "/loginpage/cart",
-      //   element: <Cart />,
-      // }
+      {
+        path: "/product/:id",
+        element: <ProductDetails />,
+      },
     ],
   },
 ]);
