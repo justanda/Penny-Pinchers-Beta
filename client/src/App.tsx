@@ -1,16 +1,56 @@
 import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div>
-    <main>
+      <Header />
+    <main className="container">
       <Outlet />
     </main>
+      <Footer />
     </div>
   )
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Outlet } from 'react-router-dom';
+
+// function App() {
+//   return (
+//     <div>
+//     <main>
+//       <Outlet />
+//     </main>
+//     </div>
+//   )
+// }
+
+// export default App
 
 
 
