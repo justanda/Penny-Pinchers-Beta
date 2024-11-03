@@ -2,6 +2,7 @@ import { ChangeEvent, useState, FormEvent } from "react";
 import { login } from "../api/authAPI";
 import Auth from "../utils/auth";
 import { CustomerLogin } from "../interfaces/CustomerLogin";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import './CustomerForm.css'; // Optional: Add any styles for the form
 
 const Login = () => {
@@ -10,8 +11,6 @@ const Login = () => {
     password: "",
   });
 
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -29,11 +28,11 @@ const Login = () => {
     try {
       const data = await login(customerData);
       Auth.login(data.token);
+      setCustomerData({username: '', password: ''});
     } catch (error) {
       console.error("Failed to login", error);
     }
-    // setUsername(username);
-    // setPassword(password);
+
   };
 
   return (
