@@ -8,7 +8,8 @@ interface cartInfo {
   updatedAt: Date;
 }
 
-interface cartInput extends Optional<cartInfo, "id" | "createdAt" | "updatedAt"> { }
+interface cartInput
+  extends Optional<cartInfo, "id" | "createdAt" | "updatedAt"> {}
 
 export class Carts extends Model<cartInfo, cartInput> implements cartInfo {
   public id!: number;

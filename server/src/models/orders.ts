@@ -8,7 +8,8 @@ interface orderInfo {
   updatedAt: Date;
 }
 
-interface orderInput extends Optional<orderInfo, "id" | "createdAt" | "updatedAt"> { }
+interface orderInput
+  extends Optional<orderInfo, "id" | "createdAt" | "updatedAt"> {}
 
 export class Orders extends Model<orderInfo, orderInput> implements orderInfo {
   public id!: number;

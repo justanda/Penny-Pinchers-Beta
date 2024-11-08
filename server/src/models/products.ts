@@ -12,7 +12,8 @@ interface productInfo {
   updatedAt: Date;
 }
 
-interface createProduct extends Optional<productInfo, "id" | "createdAt" | "updatedAt"> { }
+interface createProduct
+  extends Optional<productInfo, "id" | "createdAt" | "updatedAt"> {}
 
 class product extends Model<productInfo, createProduct> implements productInfo {
   public id!: number;

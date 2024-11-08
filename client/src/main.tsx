@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 import App from "./App.tsx";
 import ProductPage from "./pages/productPage";
 import Login from "./pages/loginPage.tsx";
@@ -14,7 +13,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/products",
         element: <ProductPage />,
       },
       {

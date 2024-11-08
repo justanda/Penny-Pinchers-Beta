@@ -1,4 +1,3 @@
-import React from "react";
 import { CustomerLogin } from "../interfaces/CustomerLogin";
 
 interface CustomerProps {
