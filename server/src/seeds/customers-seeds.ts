@@ -16,8 +16,8 @@ export const seedCustomers = async () => {
     {
       username: "Dline",
       name: "Devon Oline",
-      password: "password",
       email: "dline@estes.com",
+      password: "password",
       phone: "2345678901",
       address: "5678 Main St",
       city: "Denver",
@@ -27,8 +27,8 @@ export const seedCustomers = async () => {
     {
       username: "Sethlin",
       name: "Seth Josln",
-      password: "password",
       email: " Sethlin@meat.com",
+      password: "password",
       phone: "3456789012",
       address: "91011 Side St",
       city: "Fairbanks",

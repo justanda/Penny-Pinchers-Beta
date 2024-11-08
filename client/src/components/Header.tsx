@@ -2,7 +2,15 @@ import { Link } from "react-router-dom";
 import penniesLogo from "../assets/images/pennies.png"; // Import the image
 
 const Header = () => (
-  <header className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+  <header
+    style={{
+      backgroundColor: "#333",
+      color: "#fff",
+      textAlign: "center",
+      padding: "1em",
+    }}
+    className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
+  >
     <img
       className="me-2"
       src={penniesLogo}
@@ -15,7 +23,7 @@ const Header = () => (
       <Link className="me-3 py-2 text-decoration-none" to="/">
         Home
       </Link>
-      <Link className="py-2 text-decoration-none" to="/login">
+      <Link className="py-2 text-decoration-none" to="/loginpage">
         Login
       </Link>
     </nav>

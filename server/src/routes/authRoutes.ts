@@ -33,33 +33,3 @@ const router = Router();
 router.post("/login", login);
 
 export default router;
-
-// export const login = async (
-//     req: Request,
-//     res: Response,
-//     next: NextFunction
-// ): Promise<Response | void> => {
-//     try {
-//         const { username, password } = req.body;
-
-//         const user = await Customers.findOne({
-//             where: { username },
-//         });
-
-//         if (!user) {
-//             return res.status(401).json({ message: 'Authentication failed' });
-//         }
-
-//         const passwordIsValid = await bcrypt.compare(password, user.password);
-//         if (!passwordIsValid) {
-//             return res.status(401).json({ message: 'Authentication failed' });
-//         }
-
-//         const secretKey = process.env.JWT_SECRET_KEY || '';
-//         const token = jwt.sign({ username }, secretKey, { expiresIn: '3h' });
-
-//         return res.json({ token });
-//     } catch (error) {
-//         next(error); // Ensure error handling is correct
-//     }
-// };
