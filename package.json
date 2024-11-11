@@ -15,6 +15,7 @@
     "client:dev": "cd client && npm run dev",
     "build": "cd server && npm run build",
     "seed": "cd server && npm run seed",
+    "go": "npm i && npm run build && cd client && npm client:build",
     "render-build": "npm install && npm run build"
   },
   "keywords": [],
