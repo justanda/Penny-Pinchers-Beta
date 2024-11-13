@@ -1,0 +1,17 @@
+.headImg {
+  height: 32px;
+  width: 40px;
+}
+
+#catNav {
+  width: 90%;
+  text-align: center;
+}
+
+#loginFrm {
+  text-align: center;
+  position: relative;
+  margin-left: 100px;
+  width: 50%;
+  border: 0px solid black;
+}

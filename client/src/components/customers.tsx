@@ -1,8 +1,7 @@
-import React from "react";
-import { Customer } from "../interfaces/Customer";
+import { CustomerLogin } from "../interfaces/CustomerLogin";
 
 interface CustomerProps {
-  customer: Customer | null;
+  customer: CustomerLogin | null;
 }
 const CustomerForm: React.FC<CustomerProps> = ({ customer }) => {
   return (
@@ -11,12 +10,12 @@ const CustomerForm: React.FC<CustomerProps> = ({ customer }) => {
       {customer && (
         <form>
           <input
-            value={customer.username ?? ""}
+            value={customer.username || ""}
             type="text"
             placeholder="Username"
           />
           <input
-            value={customer.password ?? ""}
+            value={customer.password || ""}
             type="password"
             placeholder="Password"
           />

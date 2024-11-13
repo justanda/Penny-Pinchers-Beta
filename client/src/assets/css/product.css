@@ -1,0 +1,292 @@
+/* style index html */
+
+/* Universal Selector  */
+
+.headImg {
+  height: 32px;
+  width: 40px;
+}
+
+#catNav {
+  width: 90%;
+  text-align: center;
+}
+
+#loginFrm {
+  text-align: center;
+  position: relative;
+  margin-left: 100px;
+  width: 50%;
+  border: 0px solid black;
+}
+
+/* style product html */
+
+/* root element (custom color) */
+
+:root {
+  --mocha: #3c280d;
+}
+
+/* Universal Selector */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Element Selectors */
+
+body {
+  background-color: burlywood;
+}
+
+header {
+  font-size: 36px;
+  color: white;
+  background-color: var(--mocha);
+  border: 10px double burlywood;
+  border-radius: 18px;
+  margin: 8px;
+  font-style: italic;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h1 {
+  background-color: var(--mocha);
+  padding: 20px;
+}
+
+div {
+  background-color: var(--mocha);
+  border-radius: 18px;
+}
+
+div a img {
+  margin-left: 5px;
+}
+
+div a {
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+nav {
+  position: fixed;
+  top: 158px;
+  right: 8px;
+  width: 20%;
+  border-radius: 10px;
+  background-color: var(--mocha);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-style: italic;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding-bottom: 5px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+section h2 {
+  color: white;
+  font-size: 36px;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border: 3px solid var(--mocha);
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px;
+  background-color: var(--mocha);
+}
+
+main section ul {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  list-style-type: none;
+}
+
+main section ul li h3 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 25%;
+  margin-left: 25%;
+  color: var(--mocha);
+  text-decoration: underline;
+}
+
+main section ul li {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+img {
+  height: 600px;
+  width: 400px;
+}
+
+p {
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 22px;
+}
+
+footer {
+  background-color: var(--mocha);
+}
+
+footer h3 {
+  margin: 20px;
+  justify-self: center;
+  color: white;
+  padding-top: 40px;
+}
+
+footer h6 {
+  justify-self: flex-end;
+  color: white;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+footer h6 a {
+  text-decoration: none;
+}
+
+/* Class Selectors */
+
+.navDivider {
+  border-bottom: 3px solid burlywood;
+}
+
+/* Unique Identifier Selectors */
+
+#clearance {
+  color: red;
+  text-decoration: line-through;
+}
+
+#boldit {
+  font-weight: bolder;
+}
+
+#buynow {
+  font-weight: bolder;
+  color: red;
+}
+
+#joker {
+  color: blue;
+}
+
+#theft {
+  font-size: 8px;
+  color: red;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+  header {
+    font-size: 36px;
+    color: white;
+    background-color: var(--mocha);
+    border: 10px double burlywood;
+    border-radius: 18px;
+    margin: 8px;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1 {
+    background-color: var(--mocha);
+    padding: 20px;
+  }
+
+  div {
+    background-color: var(--mocha);
+    border-radius: 18px;
+  }
+
+  div a img {
+    margin-left: 5px;
+  }
+
+  div a {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    margin-right: 15px;
+  }
+
+  nav {
+    position: fixed;
+    top: initial;
+    bottom: 0;
+    left: 0.5px;
+    width: 100%;
+    border-radius: initial;
+    background-color: var(--mocha);
+    border-top: 1px solid burlywood;
+  }
+
+  nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  nav ul li {
+    list-style-type: none;
+    padding-bottom: 5px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+  }
+  .navDivider {
+    border-bottom: initial;
+    border-right: 1px solid burlywood;
+    padding-right: 30px;
+  }
+
+  footer h6 {
+    justify-self: flex-end;
+    color: white;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+  }
+}
+
+/* experimental styling */

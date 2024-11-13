@@ -1,37 +1,35 @@
-import { Router, Request, Response, RequestHandler } from "express";
-import bcrypt from "bcrypt";
+import { Router, Request, Response } from "express";
+import { Customers } from "../models/customers.js";
 import jwt from "jsonwebtoken";
-import { Customers } from "../models/customers"; // Adjust the import path as necessary
+import bcrypt from "bcrypt";
 
-const router = Router();
-
-const loginRoute: RequestHandler = async (
-  req: Request,
-  res: Response
-): Promise<Response | void> => {
+export const login = async (req: Request, res: Response): Promise<void> => {
   const { username, password } = req.body;
 
-  try {
-    const user = await Customers.findOne({ where: { username } });
+  const user = await Customers.findOne({
+    where: { username },
+  });
 
-    if (!user) {
-      return res.status(401).json({ message: "Authentication failed" });
-    }
-
-    const passwordIsValid = await bcrypt.compare(password, user.password);
-    if (!passwordIsValid) {
-      return res.status(401).json({ message: "Authentication failed" });
-    }
-
-    const secretKey = process.env.JWT_SECRET_KEY || "";
-
-    const token = jwt.sign({ username }, secretKey, { expiresIn: "3h" });
-    return res.json({ token });
-  } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+  if (!user) {
+    return;
   }
-};
+  //res.status(401).json({ message: "Authentication failed" })
+  const passwordIsValid = await bcrypt.compare(password, user.password);
+  if (!passwordIsValid) {
+    return;
+  }
+  // res.status(401).json({ message: "Authentication failed" })
+  const secretKey = process.env.JWT_SECRET_KEY || "";
+  if (!secretKey) {
+    throw new Error("JWT_SECRET_KEY is not defined");
+  }
 
-router.post("/login", loginRoute);
+  const token = jwt.sign({ username }, secretKey, { expiresIn: "3h" });
+  res.json({ token });
+};
+//
+const router = Router();
+
+router.post("/login", login);
 
 export default router;

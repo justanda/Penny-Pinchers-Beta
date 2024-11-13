@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 import App from "./App.tsx";
 import ProductPage from "./pages/productPage";
-import LoginPage from "./pages/loginPage.tsx";
-// import Cart from "./pages/Cart.tsx";
+import Login from "./pages/loginPage.tsx";
+import ProductDetails from "./pages/ProductDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
@@ -13,21 +13,16 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/products",
         element: <ProductPage />,
       },
       {
-        path: "/loginpage",
-        element: <LoginPage />,
+        path: "/loginPage",
+        element: <Login />,
       },
       {
-        path: "/loginpage/:id",
-        element: <LoginPage />,
+        path: "/product/:id",
+        element: <ProductDetails />,
       },
-      // {
-      //   path: "/loginpage/cart",
-      //   element: <Cart />,
-      // }
     ],
   },
 ]);

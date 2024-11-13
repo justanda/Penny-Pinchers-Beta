@@ -60,6 +60,7 @@ router.post("/", async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
+<<<<<<< HEAD
 });
 
 router.post("/seeds", async (req: Request, res: Response) => {
@@ -146,6 +147,8 @@ router.post("/seeds", async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json(error);
   }
+=======
+>>>>>>> main
 });
 
 //http:localhost:3001/api/products/{id}
